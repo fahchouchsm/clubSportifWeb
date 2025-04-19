@@ -1,9 +1,13 @@
 <?php
 session_start();
-require_once './connectDB.php' // fichier de connexion à la BDD
-require_once './functions/getclientinfo.php'; // là où se trouve getClientByEmail()
+require_once './connectDB.php'; // fichier de connexion à la BDD
+require_once './functions/getclientinfo.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+print_r($_SERVER);
+print_r($_POST);
+
+if (isset($_POST['pass'])) {
     $email = $_POST['email'] ;
     $password = $_POST['pass'];
 
@@ -29,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $client['email'];
 
             // Redirection vers tableau de bord ou page d'accueil
-            header("Location: ../pages/dashboard.php");
+            header("Location: ../pages/dashboard.php"); //******************************** mazal madarnahach
             exit;
         } else {
             echo "Mot de passe incorrect.";

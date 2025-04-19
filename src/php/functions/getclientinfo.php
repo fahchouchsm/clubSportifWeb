@@ -9,9 +9,6 @@ function getClientByEmail(mysqli $mysqli, string $email)
         $stmt->bind_param("s", $email); // "s" = string
         $stmt->execute();
         $result = $stmt->get_result();
-
-        echo "hello";
-        print_r($result->fetch_assoc());
     } else {
         echo "erreur de preparation de la requete";
         return false;

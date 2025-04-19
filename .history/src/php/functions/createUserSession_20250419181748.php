@@ -5,7 +5,7 @@ function createUserSession(string $email)
     $hexKey = bin2hex($key);
     setcookie('loginToken', $hexKey, time() + 2592000);
 
-    $_SESSION['userLogin'] = [
+    $_SESSION['user'] = [
         'email' => $email,
         'key' => $hexKey,
     ];

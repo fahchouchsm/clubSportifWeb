@@ -1,6 +1,5 @@
 <?php
-echo "hello world";
-session_start();
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+require_once "src/php/functions/getclientinfo.php";
+require_once "src/php/connectDB.php";
+
+getClientByEmail($conn, "simo");

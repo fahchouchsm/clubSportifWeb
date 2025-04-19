@@ -1,6 +1,6 @@
 <?php
 
-function getClientByEmail(mysqli $mysqli, string $email): null| mysqli_result
+function getClientByEmail(mysqli $mysqli, string $email)
 {
     // Préparation de la requête
     $stmt = $mysqli->prepare("SELECT clientId, nom, prenom, dateNais, email, tel, password FROM client WHERE email = ?");

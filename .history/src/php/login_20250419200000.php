@@ -12,14 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($password) ?? false;
     $client =  getClientByEmail($conn, $email);
     if ($client) {
-        $row = mysqli_fetch_assoc($client);
-        if ($row['password'] == $password && $row["email"] == $email) {
-            createUserSession($email, $stayLoged ? 30 : 1);
-            // TODO - 
-            echo "all good";
-        } else {
-            header("Location : ../pages/login.php");
-        }
+        echo "Client trouvé";
+        print_r(mysqli_fetch_assoc($client));
+        // echo $row['password'];
+        createUserSession($email, $stayLoged ? 30 : 1);
     }
 } else {
     echo "Méthode non autorisée.";

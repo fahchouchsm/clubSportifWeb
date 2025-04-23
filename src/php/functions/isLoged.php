@@ -11,3 +11,4 @@ function isLoged(): bool
         return false;
     }
 }
+?>

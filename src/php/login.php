@@ -2,6 +2,7 @@
 session_start();
 require_once './connectDB.php';
 require_once './functions/getclientinfo.php';
+<<<<<<< HEAD
 
 
 
@@ -26,11 +27,26 @@ if (isset($_POST['pass']) && isset($_POST['email'])) {
 
             header("Location: ../pages/dashboard.php");
             exit;
+=======
+require_once './functions/createUserSession.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['pass'];
+    $stayLoged = $_POST['stayLoged'];
+    $email = trim($email);
+    $password = trim($password) ?? false;
+    $client =  getClientByEmail($conn, $email);
+    if ($client) {
+        $row = mysqli_fetch_assoc($client);
+        if ($row['password'] == $password && $row["email"] == $email) {
+            createUserSession($email, $stayLoged ? 30 : 1);
+            // TODO -
+            echo "all good";
+>>>>>>> main
         } else {
-            echo "Mot de passe incorrect.";
+            header("Location : ../pages/login.php");
         }
-    } else {
-        echo "Aucun compte trouvé avec cet email.";
     }
 } else {
     echo "Méthode non autorisée.";

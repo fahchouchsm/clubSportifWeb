@@ -2,6 +2,32 @@
 session_start();
 require_once './connectDB.php';
 require_once './functions/getclientinfo.php';
+<<<<<<< HEAD
+
+
+
+if (isset($_POST['pass']) && isset($_POST['email'])) {
+    $email = $_POST['email'] ;
+    $password = $_POST['pass'];
+
+    $email = trim($email);
+
+    if (empty($email) || empty($password)) {
+        echo "Veuillez remplir tous les champs.";
+        exit;
+    }
+
+    $client = getClientByEmail($conn, $email);
+    echo "hamada";
+    if ($client != null) {
+        if ($client['password'] == $password) {
+            $_SESSION['clientId'] = $client['clientId'];
+            $_SESSION['nom'] = $client['nom'];
+            $_SESSION['email'] = $client['email'];
+
+            header("Location: ../pages/dashboard.php");
+            exit;
+=======
 require_once './functions/createUserSession.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             print_r($_SESSION);
             print_r($_POST);
             echo "all good";
+>>>>>>> main
         } else {
             header("Location : ../pages/login.php");
         }

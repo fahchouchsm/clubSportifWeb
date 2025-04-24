@@ -1,10 +1,33 @@
 <?php
 
+<<<<<<< HEAD
+function getClientByEmail($conn, $email)
+=======
 function getClientByEmail(mysqli $mysqli, string $email): null| mysqli_result
+>>>>>>> main
 {
-    // Préparation de la requête
-    $stmt = $mysqli->prepare("SELECT clientId, nom, prenom, dateNais, email, tel, password FROM client WHERE email = ?");
 
+<<<<<<< HEAD
+    $query = $conn->prepare("SELECT * FROM client WHERE email = ?");
+
+
+    if ($query === false) {
+        die("Erreur lors de la préparation de la requête : " . $conn->error);
+    }
+
+
+    $query->bind_param("s", $email);
+
+
+    $query->execute();
+
+
+    $resultSet = $query->get_result();
+
+    return $resultSet->fetch_assoc();
+}
+?>
+=======
     if ($stmt) {
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -15,3 +38,4 @@ function getClientByEmail(mysqli $mysqli, string $email): null| mysqli_result
         return null;
     }
 }
+>>>>>>> main

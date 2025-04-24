@@ -7,7 +7,7 @@ require_once './functions/createUserSession.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['pass'];
-    $stayLoged = $_POST['stayLoged'] || false;
+    $stayLoged = $_POST['stayLoged'];
     $email = trim($email);
     $password = trim($password) ?? false;
     $client =  getClientByEmail($conn, $email);

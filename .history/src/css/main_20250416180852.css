@@ -1,9 +1,0 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
-body {
-  font-family: "Roboto", sans-serif;
-}
-
-.input-style {
-  @apply w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none;
-}

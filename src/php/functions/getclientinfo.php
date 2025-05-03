@@ -2,7 +2,7 @@
 
 function getClientByEmail(mysqli $mysqli, string $email): null| mysqli_result
 {
-    $stmt = $mysqli->prepare("SELECT * FROM clients WHERE email = ?");
+    $stmt = $mysqli->prepare("SELECT * FROM client WHERE email = ?");
 
     if ($stmt) {
         $stmt->bind_param("s", $email);

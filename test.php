@@ -1,5 +1,17 @@
 <?php
-require_once "src/php/functions/getclientinfo.php";
-require_once "src/php/connectDB.php";
+session_start();
 
-getClientByEmail($conn, "simo@gmail.com");
+print_r($_SESSION);
+echo "<br>";
+print_r($_COOKIE);
+echo "<br>";
+
+require_once("./src/php/functions/isLoged.php");
+
+$mail = isLoged();
+if (!$mail) {
+    echo "not loged";
+} else {
+    echo "loged";
+    echo $mail;
+}

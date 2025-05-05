@@ -1,8 +1,8 @@
 <?php
-require_once  './src/php/functions/isLoged.php';
+require_once  "../php/functions/isLoged.php";
 
 if (isLoged()) {
-  $navbar = "<!DOCTYPE html>
+$navbar="<!DOCTYPE html>
 <html lang='fr'>
 <head>
   <meta charset='UTF-8' />
@@ -15,6 +15,7 @@ if (isLoged()) {
 
   <nav class='bg-white shadow-md fixed w-full top-0 z-50'>
     <div class='max-w-7xl mx-auto px-4 py-4 flex items-center justify-between'>
+      
       <div class='w-44'>
         <img src='logo.png' alt='City Club Logo' class='w-full h-auto' />
       </div>
@@ -61,8 +62,10 @@ if (isLoged()) {
   </script>
 </body>
 </html>
-";
+"
+    
+    
 } else {
-  echo "'<a href='login.php'>Connexion</a>'";
-  echo "'<a href='register.php'>Inscription</a>'";
+    echo '<a href='login.php'>Connexion</a>';
+    echo '<a href='register.php'>Inscription</a>';
 }

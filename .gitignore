@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # CakePHP 3
 
 /vendor/*
@@ -24,7 +23,5 @@
 /app/Config/core.php
 /app/Config/database.php
 /vendors/*
-=======
 node_modules/
->>>>>>> 95ed34d (testing)
 src/php/connectDB.php

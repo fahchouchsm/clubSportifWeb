@@ -48,7 +48,7 @@ if (isset($_POST['nom'])) {
 
     if (empty($errors)) {
         if (insertDBClient($conn, $nom, $prenom, $date_naissance, $email, $motdepasse)) {
-            createUserSession($email);
+            createUserSession($email, 30);
             header("Location: ../pages/inscription.html");
         } else {
             echo "❌ Erreur lors de l'insertion dans la base de données.";

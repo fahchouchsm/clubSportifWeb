@@ -52,7 +52,8 @@ session_start();
                                 ?</a>
                         </div>
                         <button type="submit" class="w-full bg-orange-500 text-lg text-white">
-                            Se connecter
+                            <a href="../php/login.php" class="text-primary-600 font-medium hover:underline">Se
+                                connecter</a>
                         </button>
                         <p class="text-sm font-light text-gray-500">
                             Vous n'avez pas encore de compte ?

@@ -1,14 +1,14 @@
 <?php
-function isLoged(): bool
+function isLoged(): false | string
 {
-    // $key = $_COOKIE['loginToken'] ?? null;
-    // echo "key : " . $key;
-    // echo "session : " . $_SESSION['loginToken']['key'];
-    // if ($key && $key == $_SESSION['loginToken']['key']) {
-    //     return true;
-    // } else {
-    //     // header('Location: ../../pages/login.php');
-    //     return false;
-    // }
-    return false;
+    if (isset($_COOKIE['loginToken'], $_SESSION['loginToken'])) {
+        if ($_COOKIE['loginToken'] === $_SESSION['loginToken']['key']) {
+            return $_SESSION['loginToken']['email'];
+        } else {
+            setcookie('loginToken', '', time());
+            return false;
+        }
+    } else {
+        return false;
+    }
 }

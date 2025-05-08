@@ -8,4 +8,5 @@ function createUserSession(string $email, int $days)
         'email' => $email,
         'key' => $hexKey,
     ];
+    echo "hello world ";
 }

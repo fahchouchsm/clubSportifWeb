@@ -46,7 +46,7 @@
     </section>
 
     <section class="mb-10 rounded-lg bg-white p-6 shadow">
-      <h2 class="mb-4 text-xl font-semibold">Mes Prochaines Séances</h2>
+      <h2 class="mb-4 text-xl font-semibold">Prochaines Séances</h2>
       <div class="grid gap-6 md:grid-cols-2">
         <div class="rounded border border-gray-200 bg-gray-100 p-4">
           <div class="mb-2 flex items-center justify-between">
@@ -62,14 +62,7 @@
           <p class="flex items-center gap-2 text-gray-600">
             <i class="fas fa-map-marker-alt"></i> Salle 3
           </p>
-          <div class="mt-4 flex justify-between">
-            <button class="rounded bg-red-600 px-4 py-1 text-white">
-              Annuler
-            </button>
-            <button class="rounded bg-green-600 px-4 py-1 text-white">
-              Rappel
-            </button>
-          </div>
+
         </div>
 
         <div class="rounded border border-gray-200 bg-gray-100 p-4">
@@ -86,14 +79,6 @@
           <p class="flex items-center gap-2 text-gray-600">
             <i class="fas fa-map-marker-alt"></i> Salle 1
           </p>
-          <div class="mt-4 flex justify-between">
-            <button class="rounded bg-red-600 px-4 py-1 text-white">
-              Annuler
-            </button>
-            <button class="rounded bg-green-600 px-4 py-1 text-white">
-              Rappel
-            </button>
-          </div>
         </div>
       </div>
     </section>

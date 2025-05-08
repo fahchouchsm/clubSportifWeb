@@ -1,12 +1,25 @@
 <?php
-function createUserSession(string $email, int $days)
+function createUserSession(string $email, int $days): void
 {
-    $key = random_bytes(length: 32);
-    $hexKey = bin2hex($key);
-    setcookie('loginToken', $hexKey, time() + 86400 * $days, "/");
+    $key = bin2hex(random_bytes(32));
+
+    setcookie(
+        'loginToken',
+        $key,
+        [
+            'expires' => time() + 86400 * $days,
+            'path' => '/',
+            'secure' => isset($_SERVER['HTTPS']),
+            'httponly' => true,
+            'samesite' => 'Strict'
+        ]
+    );
+
+
     $_SESSION['loginToken'] = [
         'email' => $email,
-        'key' => $hexKey,
+        'key' => $key,
     ];
-    echo "hello world ";
+
+    session_regenerate_id(true);
 }

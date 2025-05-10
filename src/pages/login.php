@@ -1,5 +1,4 @@
 <?php
-session_start();
 ?>
 <!doctype html>
 <html lang="fr">
@@ -52,9 +51,9 @@ session_start();
                                 ?</a>
                         </div>
                         <button type="submit" class="w-full bg-orange-500 text-lg text-white">
-                            <a href="../php/login.php" class="text-primary-600 font-medium hover:underline">Se
-                                connecter</a>
+                            Se connecter
                         </button>
+
                         <p class="text-sm font-light text-gray-500">
                             Vous n'avez pas encore de compte ?
                             <a href="#" class="text-primary-600 font-medium hover:underline">Créer un compte</a>

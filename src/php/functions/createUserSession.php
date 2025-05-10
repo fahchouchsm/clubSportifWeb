@@ -2,7 +2,6 @@
 function createUserSession(string $email, int $days): void
 {
     $key = bin2hex(random_bytes(32));
-
     setcookie(
         'loginToken',
         $key,
@@ -14,12 +13,9 @@ function createUserSession(string $email, int $days): void
             'samesite' => 'Strict'
         ]
     );
-
-
     $_SESSION['loginToken'] = [
         'email' => $email,
         'key' => $key,
     ];
-
     session_regenerate_id(true);
 }

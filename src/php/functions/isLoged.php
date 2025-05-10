@@ -1,20 +1,19 @@
 <?php
+session_start();
+
 function isLogged(): false | string
 {
-    if (!isset($_COOKIE['loginToken'], $_SESSION['loginToken'])) {
+    if (!isset($_COOKIE['loginToken']) && !isset($_SESSION['loginToken'])) {
+        echo "No cookie or session token found.";
         return false;
     }
 
     $cookieToken = $_COOKIE['loginToken'];
-    $sessionToken = $_SESSION['loginToken'];
+    $userSession = $_SESSION['loginToken'];
 
-    if (!is_array($sessionToken) || !isset($sessionToken['key'], $sessionToken['email'])) {
-        return false;
+    if ($userSession['key'] == $cookieToken) {
+        return $userSession["email"];
     }
 
-    if ($cookieToken === $sessionToken['key']) {
-        return $sessionToken['email'];
-    }
-    setcookie('loginToken', '', time() - 3600, '/');
     return false;
 }

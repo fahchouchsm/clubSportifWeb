@@ -29,7 +29,6 @@
   <div class="flex items-center gap-2">
     <a href="client-profile.html"
       class="flex items-center gap-2 text-black hover:bg-orange-500 hover:text-white px-4 py-2 rounded"></a>
-    <img src="https://via.placeholder.com/40" alt="Profile" class="h-10 w-10 rounded-full object-cover" />
     <span>Mon Compte</span>
     </a>
   </div>

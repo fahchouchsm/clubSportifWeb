@@ -2,6 +2,7 @@
 session_start();
 require_once 'connectDB.php';
 require_once "./functions/createUserSession.php";
+require_once "./database/getclientinfo.php";
 
 
 $errors = [];
@@ -21,10 +22,7 @@ if (isset($_POST["email"], $_POST["pass"])) {
 
     // ok
     if (empty($errors)) {
-        $stmt = $conn->prepare("SELECT clientId, email, password FROM client WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $result = getClientByEmail($conn, $email);
 
         if ($result->num_rows > 0) {
             $client = $result->fetch_assoc();

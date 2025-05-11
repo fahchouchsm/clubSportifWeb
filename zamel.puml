@@ -1,0 +1,148 @@
+@startuml Diagramme de Classes - Gestion de Stock pour la Cafétéria d'un Club Sportif
+
+package "actionsPages" {
+  interface simplePageInt {
+    +afficherPage()
+  }
+
+  class SetQuantitePage {
+    +afficherPage()
+    -selectionnerParId()
+    -selectionnerParTitre()
+    -modifierQuantite(produit: Produit)
+    -ajouterQuantite(produit: Produit)
+    -retirerQuantite(produit: Produit)
+    -definirQuantite(produit: Produit)
+  }
+
+  class SeuilAlertPage {
+    +afficherPage()
+  }
+}
+
+package "database" {
+  class GestionnaireBaseDeDonnees {
+    -cn: Connexion
+    +GestionnaireBaseDeDonnees(url: Chaîne, nomUtilisateur: Chaîne, motDePasse: Chaîne)
+    +obtenirConnexion(): Connexion
+    +fermerConnexion()
+  }
+}
+
+package "navigation" {
+  class Konsole {
+    -sc: Scanner
+    +afficherTitre(nom: Chaîne)
+    +afficherLigne()
+    +effacerConsole()
+    +lireEntreeUtilisateurEntier(): entier
+    +lireLigneUtilisateur(): Chaîne
+    +fermerScanner()
+    +afficherNavigateur()
+    +afficherTableau(tables: ListeTableau<? étend Table>, colonnes: Chaîne[])
+    +dormir(ms: entier)
+  }
+}
+
+package "pages" {
+  abstract class Page {
+    #nomPage: Chaîne
+    +Page(nomPage: Chaîne)
+    +afficherPage(numPage: entier, limite: entier)
+    #ajouterElement(nomsColonnes: Chaîne[])
+  }
+
+  class CategoriePage {
+    +CategoriePage()
+    +afficherPage(numPage: entier, limite: entier)
+    #ajouterElement(nomsColonnes: Chaîne[])
+  }
+
+  class ProduitPage {
+    +ProduitPage()
+    +afficherPage(numPage: entier, limite: entier)
+    #ajouterElement(nomsColonnes: Chaîne[])
+    -rechercherProduit()
+  }
+}
+
+package "tables" {
+  abstract class Table {
+    #nomTableau: Chaîne
+    +Table(nomTableau: Chaîne)
+    +obtenirDonneesLigneCommeChaine(): Chaîne[]
+    #recupererTableau(nomTableau: Chaîne, numPage: entier, limite: entier): JeuDeRésultats
+  }
+
+  class Categorie {
+    -id: entier
+    -nom: Chaîne
+    -description: Chaîne
+    +Categorie(id: entier, nom: Chaîne, description: Chaîne)
+    +Categorie(nom: Chaîne, description: Chaîne)
+    +obtenirCategorie(numOrdre: entier): Categorie
+    +obtenirProduitsCategorie(idCat: entier, limite: entier): ListeTableau<Produit>
+    +obtenirDonneesLigneCommeChaine(): Chaîne[]
+    +obtenirNomsColonnesPourProduits(): Chaîne[]
+    +obtenirNomsColonnes(): Chaîne[]
+    +obtenirId(): entier
+    +obtenirNom(): Chaîne
+    +obtenirDescription(): Chaîne
+  }
+
+  class Produit {
+    -id: entier
+    -titre: Chaîne
+    -quantite: flottant
+    -unite: Chaîne
+    -seuil: flottant
+    -prixAchat: flottant
+    -prixUnitaire: flottant
+    +Produit(id: entier, titre: Chaîne, quantite: flottant, unite: Chaîne, seuil: flottant, prixAchat: flottant, prixUnitaire: flottant)
+    +Produit(titre: Chaîne, quantite: flottant, unite: Chaîne, seuil: flottant, prixAchat: flottant, prixUnitaire: flottant)
+    +obtenirNomsColonnes(): Chaîne[]
+    +obtenirDonneesLigneCommeChaine(): Chaîne[]
+    +obtenirTousProduits(numPage: entier, limite: entier): ListeTableau<Produit>
+    +obtenirProduitParId(id: entier): Produit
+    +rechercherProduitParTitre(termeRecherche: Chaîne): Produit
+    +rechercherProduitsParTitre(termeRecherche: Chaîne): ListeTableau<Produit>
+    +obtenirProduitsSousSeuil(): ListeTableau<Produit>
+    +mettreAJour()
+    +obtenirId(): entier
+    +obtenirTitre(): Chaîne
+    +definirTitre(titre: Chaîne)
+    +obtenirQuantite(): flottant
+    +definirQuantite(quantite: flottant)
+    +obtenirUnite(): Chaîne
+    +definirUnite(unite: Chaîne)
+    +obtenirSeuil(): flottant
+    +definirSeuil(seuil: flottant)
+    +obtenirPrixAchat(): flottant
+    +definirPrixAchat(prixAchat: flottant)
+    +obtenirPrixUnitaire(): flottant
+    +definirPrixUnitaire(prixUnitaire: flottant)
+  }
+}
+
+' Relations avec cardinalités
+simplePageInt <|.. SetQuantitePage
+simplePageInt <|.. SeuilAlertPage
+Page <|-- CategoriePage
+Page <|-- ProduitPage
+Table <|-- Categorie
+Table <|-- Produit
+
+SetQuantitePage "1" ----> "0..1" Produit : utilise
+SeuilAlertPage "1" --> "0..*" Produit : utilise
+CategoriePage "1" ---> "0..1" Categorie : utilise
+CategoriePage "1" --> "0..*" Produit : affiche
+ProduitPage "1" --> "0..*" Produit : gère
+Konsole "1" --> "0..1" SetQuantitePage : navigue
+Konsole "1" --> "0..1" SeuilAlertPage : navigue
+Konsole "1" --> "0..1" CategoriePage : navigue
+Konsole "1" --> "0..1" ProduitPage : navigue
+Categorie "1" --> "0..*" Produit : associé
+Produit "0..*" --> "1" GestionnaireBaseDeDonnees : persiste
+Categorie "0..*" --> "1" GestionnaireBaseDeDonnees : persiste
+
+@enduml

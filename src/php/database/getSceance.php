@@ -2,7 +2,8 @@
 function getSeance(mysqli $mysqli, int $limit): ?mysqli_result
 {
     $stmt = $mysqli->prepare("
-        SELECT 
+        SELECT
+            s.seanceId,
             s.dateSeance,
             s.description,
             s.max,
@@ -10,7 +11,8 @@ function getSeance(mysqli $mysqli, int $limit): ?mysqli_result
             c.nom AS coach_nom,
             c.prenom AS coach_prenom,
             s.tempDebut,
-            s.tempFin
+            s.tempFin,
+            c.coachId
         FROM
             seance s
         INNER JOIN
@@ -20,14 +22,14 @@ function getSeance(mysqli $mysqli, int $limit): ?mysqli_result
         WHERE
             s.dateSeance > CURDATE()
         GROUP BY
-            s.seanceId, s.dateSeance, s.description, s.max, c.nom, c.prenom, s.tempDebut, s.tempFin
+            s.seanceId, s.dateSeance, s.description, s.max, c.nom, c.prenom, s.tempDebut, s.tempFin, c.coachId
         ORDER BY
             s.dateSeance
         LIMIT ?;
     ");
 
     if (!$stmt) {
-        return null; // Handle preparation error
+        return null;
     }
 
     $stmt->bind_param("i", $limit);

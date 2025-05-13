@@ -16,7 +16,7 @@
             <a href="#" class="mb-6 text-2xl font-semibold text-gray-900">
                 <img class="max-w-64" src="../public/logo/png/logo-no-background.png" alt="logo" />
             </a>
-            <div class="w-full rounded-lg bg-white shadow sm:max-w-md md:mt-0 xl:p-0">
+            <div class="w-full rounded-lg bg-white shadow-2xl sm:max-w-md md:mt-0 xl:p-0">
                 <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
                     <h1 class="text-xl leading-tight font-bold tracking-tight text-gray-900 md:text-2xl">
                         Connectez-vous à votre compte
@@ -56,7 +56,8 @@
 
                         <p class="text-sm font-light text-gray-500">
                             Vous n'avez pas encore de compte ?
-                            <a href="#" class="text-primary-600 font-medium hover:underline">Créer un compte</a>
+                            <a href="./inscription.html" class="text-primary-600 font-medium hover:underline">Créer un
+                                compte</a>
                         </p>
                     </form>
                 </div>

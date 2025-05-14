@@ -1,6 +1,6 @@
 <?php
 require_once "../php/connectDB.php";
-require_once "../php/database/getSceance.php";
+require_once "../php/database/getSeance.php";
 ?>
 
 <!DOCTYPE html>

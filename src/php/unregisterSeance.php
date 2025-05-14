@@ -7,7 +7,7 @@ session_start();
 // Vérifier si l'utilisateur est connecté
 $email = isLogged();
 if (!$email) {
-    die("Erreur : Vous devez être connecté pour vous inscrire.");
+    die("Erreur : Vous devez être connecté pour vous désinscrire.");
 }
 
 // Récupérer clientId à partir de l'email
@@ -29,30 +29,19 @@ if (!$seanceId) {
     die("Erreur : Identifiant de séance invalide.");
 }
 
-// Vérifier si la séance existe et a des places disponibles
-$stmt = $conn->prepare("
-    SELECT s.max, COUNT(cs.clientId) AS subscribed_count 
-    FROM seance s
-    LEFT JOIN clientSeance cs ON s.seanceId = cs.seanceId
-    WHERE s.seanceId = ?
-    GROUP BY s.seanceId
-");
+// Vérifier si la séance existe
+$stmt = $conn->prepare("SELECT 1 FROM seance WHERE seanceId = ?");
 $stmt->bind_param("i", $seanceId);
 $stmt->execute();
 $result = $stmt->get_result();
-$seance = $result->fetch_assoc();
+$seanceExists = $result->num_rows > 0;
 $stmt->close();
 
-if (!$seance) {
+if (!$seanceExists) {
     die("Erreur : Séance introuvable.");
 }
 
-$remaining_spots = $seance['max'] - $seance['subscribed_count'];
-if ($remaining_spots <= 0) {
-    die("Erreur : Cette séance est complète.");
-}
-
-// Vérifier si le client est déjà inscrit
+// Vérifier si le client est inscrit
 $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM clientSeance WHERE clientId = ? AND seanceId = ?");
 $stmt->bind_param("ii", $clientId, $seanceId);
 $stmt->execute();
@@ -60,18 +49,18 @@ $result = $stmt->get_result();
 $isRegistered = $result->fetch_assoc()['count'] > 0;
 $stmt->close();
 
-if ($isRegistered) {
-    die("Erreur : Vous êtes déjà inscrit à cette séance.");
+if (!$isRegistered) {
+    die("Erreur : Vous n'êtes pas inscrit à cette séance.");
 }
 
-// Inscrire le client
-$stmt = $conn->prepare("INSERT INTO clientSeance (clientId, seanceId) VALUES (?, ?)");
+// Désinscrire le client
+$stmt = $conn->prepare("DELETE FROM clientSeance WHERE clientId = ? AND seanceId = ?");
 $stmt->bind_param("ii", $clientId, $seanceId);
 
 if ($stmt->execute()) {
     header("Location: ../pages/seances.php");
 } else {
-    die("Erreur : Erreur lors de l'inscription. Veuillez réessayer.");
+    die("Erreur : Erreur lors de la désinscription. Veuillez réessayer.");
 }
 
 $stmt->close();

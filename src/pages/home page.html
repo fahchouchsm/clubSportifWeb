@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness Hub</title>
+    <link rel="stylesheet" href="../css/home page.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="custom-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../public/logo/png/logo-no-background.png" alt="Fitness Hub" />
+            </div>
+
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#programmes">Programmes</a></li>
+                    <li><a href="#abonnements">Abonnements</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="../pages/login.php" class="login-btn">Se connecter</a></li>
+                    <li><a href="../pages/inscription.html" class="signup-btn">S'inscrire</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Bienvenue dans notre Club de Fitness</h1>
+            <p>Rejoignez-nous pour un mode de vie plus sain et plus fort !</p>
+        </div>
+    </section>
+
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <h2>À propos de nous</h2>
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Excellence & Innovation en Fitness</h3>
+                    <p>Notre club de fitness est le fruit d'une passion pour le bien-être et la performance. Nous nous
+                        distinguons par notre approche personnalisée et notre engagement envers l'excellence. Notre
+                        équipe d'entraîneurs certifiés et notre infrastructure de pointe vous garantissent une
+                        expérience d'entraînement unique et efficace.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="number">2000+</span>
+                        <span class="label">Membres Actifs</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">15+</span>
+                        <span class="label">Coach Experts</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">30+</span>
+                        <span class="label">Cours Quotidiens</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programmes" class="programmes">
+        <h2>Nos Programmes</h2>
+        <div class="programs-container">
+            <div class="program-card" data-program="yoga">
+                <div class="program-image">
+                    <img src="../public/imgs/images/yoga.jpg" alt="Yoga">
+                    <div class="program-overlay">
+                        <h3>Yoga</h3>
+                        <p>Découvrez l'harmonie corps-esprit</p>
+                    </div>
+                </div>
+                <div class="program-details">
+                    <div class="program-info">
+                        <h4>Yoga</h4>
+                        <p>Améliorez votre flexibilité et votre concentration avec nos séances de yoga guidées par des
+                            experts.</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-clock"></i> Durée: 60 min</li>
+                            <li><i class="fas fa-user"></i> Niveau: Tous niveaux</li>
+                            <li><i class="fas fa-calendar"></i> Disponible: Tous les jours</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-card" data-program="strength">
+                <div class="program-image">
+                    <img src="../public/imgs/images/strength.jpg" alt="Strength Training">
+                    <div class="program-overlay">
+                        <h3>Musculation</h3>
+                        <p>Développez votre force maximale</p>
+                    </div>
+                </div>
+                <div class="program-details">
+                    <div class="program-info">
+                        <h4>Musculation</h4>
+                        <p>Devenez plus fort avec notre programme d'entraînement en force, adapté à tous les niveaux.
+                        </p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-clock"></i> Durée: 90 min</li>
+                            <li><i class="fas fa-user"></i> Niveau: Tous niveaux</li>
+                            <li><i class="fas fa-calendar"></i> Disponible: Tous les jours</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-card" data-program="cycle">
+                <div class="program-image">
+                    <img src="../public/imgs/images/fitness-bg.jpg" alt="Vélo Fitness">
+                    <div class="program-overlay">
+                        <h3>Vélo Fitness</h3>
+                        <p>Boostez votre cardio</p>
+                    </div>
+                </div>
+                <div class="program-details">
+                    <div class="program-info">
+                        <h4>Vélo Fitness</h4>
+                        <p>Brûlez des calories et améliorez votre endurance avec nos séances de vélo fitness.</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-clock"></i> Durée: 45 min</li>
+                            <li><i class="fas fa-user"></i> Niveau: Tous niveaux</li>
+                            <li><i class="fas fa-calendar"></i> Disponible: Mar, Jeu, Sam</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-card" data-program="combat">
+                <div class="program-image">
+                    <img src="../public/imgs/images/combat2.jpg" alt="Sports de Combat">
+                    <div class="program-overlay">
+                        <h3>Sports de Combat</h3>
+                        <p>Libérez votre énergie</p>
+                    </div>
+                </div>
+                <div class="program-details">
+                    <div class="program-info">
+                        <h4>Sports de Combat</h4>
+                        <p>Apprenez les techniques des sports de combat avec nos entraîneurs expérimentés.</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-clock"></i> Durée: 60 min</li>
+                            <li><i class="fas fa-user"></i> Niveau: Intermédiaire</li>
+                            <li><i class="fas fa-calendar"></i> Disponible: Lun, Mer, Ven</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Abonnements Section -->
+    <section id="abonnements" class="abonnements">
+        <h2>Nos Abonnements</h2>
+        <div class="abonnement-list">
+            <div class="abonnement">
+                <h3>Mensuel</h3>
+                <p>Accès illimité à toutes les installations</p>
+                <p class="price">300 Dhs / mois</p>
+            </div>
+            <div class="abonnement">
+                <h3>Trimestriel</h3>
+                <p>Accès illimité + 1 séance gratuite avec coach</p>
+                <p class="price">850 Dhs / 3 mois</p>
+            </div>
+            <div class="abonnement">
+                <h3>Annuel</h3>
+                <p>Accès total + coaching personnalisé</p>
+                <p class="price">3000 Dhs / an</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2>Nos Installations</h2>
+        <div class="gallery-container">
+            <!-- Salle Cardio -->
+            <div class="gallery-section">
+                <div class="gallery-image">
+                    <img src="../public/imgs/images/cardio.jpg" alt="Salle Cardio">
+                </div>
+                <div class="gallery-info">
+                    <h3>Salle Cardio</h3>
+                    <div class="info-content">
+                        <div class="info-section">
+                            <h4>Équipements Premium</h4>
+                            <ul>
+                                <li>Collection complète de tapis de course dernière génération</li>
+                                <li>Vélos elliptiques haute performance</li>
+                                <li>Rameurs professionnels</li>
+                                <li>Vélos stationnaires connectés</li>
+                            </ul>
+                        </div>
+                        <div class="info-section">
+                            <h4>Caractéristiques Exclusives</h4>
+                            <ul>
+                                <li>Espace climatisé avec système de ventilation optimisé</li>
+                                <li>Écrans TV individuels sur chaque équipement</li>
+                                <li>Vue panoramique sur la ville</li>
+                                <li>Zone de récupération avec fontaines d'eau</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salle Musculation -->
+            <div class="gallery-section">
+                <div class="gallery-image">
+                    <img src="../public/imgs/images/gallery2.jpg" alt="Salle Musculation">
+                </div>
+                <div class="gallery-info">
+                    <h3>Salle Musculation</h3>
+                    <div class="info-content">
+                        <div class="info-section">
+                            <h4>Équipements Professionnels</h4>
+                            <ul>
+                                <li>Machines guidées de dernière génération</li>
+                                <li>Zone poids libres complète</li>
+                                <li>Équipements premium pour tous les niveaux</li>
+                                <li>Bancs d'entraînement multifonctions</li>
+                            </ul>
+                        </div>
+                        <div class="info-section">
+                            <h4>Caractéristiques Premium</h4>
+                            <ul>
+                                <li>Espace ventilé avec système de climatisation</li>
+                                <li>Éclairage professionnel adapté</li>
+                                <li>Zone d'échauffement dédiée</li>
+                                <li>Espace de coaching personnalisé</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salle Yoga -->
+            <div class="gallery-section">
+                <div class="gallery-image">
+                    <img src="../public/imgs/images/yoga12.jpg" alt="Salle Yoga">
+                </div>
+                <div class="gallery-info">
+                    <h3>Salle Yoga</h3>
+                    <div class="info-content">
+                        <div class="info-section">
+                            <h4>Équipements Spécialisés</h4>
+                            <ul>
+                                <li>Matériel professionnel fourni</li>
+                                <li>Blocs et sangles de qualité premium</li>
+                                <li>Couvertures et coussins confortables</li>
+                                <li>Accessoires de méditation</li>
+                            </ul>
+                        </div>
+                        <div class="info-section">
+                            <h4>Caractéristiques Zen</h4>
+                            <ul>
+                                <li>Espace lumineux avec éclairage naturel</li>
+                                <li>Ambiance apaisante et relaxante</li>
+                                <li>Température contrôlée pour le confort</li>
+                                <li>Son surround pour la méditation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salle Combat -->
+            <div class="gallery-section">
+                <div class="gallery-image">
+                    <img src="../public/imgs/images/combat2.jpg" alt="Salle Combat">
+                </div>
+                <div class="gallery-info">
+                    <h3>Salle Combat</h3>
+                    <div class="info-content">
+                        <div class="info-section">
+                            <h4>Équipements Professionnels</h4>
+                            <ul>
+                                <li>Ring de boxe professionnel</li>
+                                <li>Matériel d'entraînement complet</li>
+                                <li>Sacs de frappe de différentes tailles</li>
+                                <li>Équipements de protection</li>
+                            </ul>
+                        </div>
+                        <div class="info-section">
+                            <h4>Caractéristiques Spéciales</h4>
+                            <ul>
+                                <li>Espace adapté aux sports de combat</li>
+                                <li>Ventilation optimale pour l'entraînement</li>
+                                <li>Zone de récupération dédiée</li>
+                                <li>Éclairage professionnel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salle CrossFit -->
+            <div class="gallery-section">
+                <div class="gallery-image">
+                    <img src="../public/imgs/images/crossfit.jpg" alt="Salle CrossFit">
+                </div>
+                <div class="gallery-info">
+                    <h3>Salle CrossFit</h3>
+                    <div class="info-content">
+                        <div class="info-section">
+                            <h4>Équipements CrossFit</h4>
+                            <ul>
+                                <li>Équipements CrossFit professionnels</li>
+                                <li>Barres olympiques de qualité</li>
+                                <li>Kettlebells et poids libres</li>
+                                <li>Matériel d'entraînement fonctionnel</li>
+                            </ul>
+                        </div>
+                        <div class="info-section">
+                            <h4>Caractéristiques Dynamiques</h4>
+                            <ul>
+                                <li>Espace modulable pour tous les exercices</li>
+                                <li>Zone de cardio intégrée</li>
+                                <li>Éclairage dynamique adapté</li>
+                                <li>Ventilation optimisée</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salle Étirement -->
+            <div class="gallery-section">
+                <div class="gallery-image">
+                    <img src="../public/imgs/images/etirement2.jpg" alt="Salle Étirement">
+                </div>
+                <div class="gallery-info">
+                    <h3>Salle Étirement</h3>
+                    <div class="info-content">
+                        <div class="info-section">
+                            <h4>Équipements de Récupération</h4>
+                            <ul>
+                                <li>Zone de stretching professionnelle</li>
+                                <li>Équipements de mobilité avancés</li>
+                                <li>Rouleaux de massage premium</li>
+                                <li>Accessoires de récupération</li>
+                            </ul>
+                        </div>
+                        <div class="info-section">
+                            <h4>Caractéristiques Relaxantes</h4>
+                            <ul>
+                                <li>Espace calme et apaisant</li>
+                                <li>Musique relaxante ambiante</li>
+                                <li>Ambiance zen et détendue</li>
+                                <li>Éclairage doux et adapté</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Blog & Conseils Section -->
+    <section class="blog-section">
+        <h2>Conseils & Astuces</h2>
+        <div class="blog-container">
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="../public/imgs/images/s'achaufer.jpg" alt="Échauffement">
+                    <div class="blog-overlay">
+                        <span class="blog-category">Technique</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h3>Comment bien s'échauffer ?</h3>
+                    <div class="blog-info">
+                        <span><i class="fas fa-clock"></i> 5 min de lecture</span>
+                        <span><i class="fas fa-calendar"></i> 15 Mars 2024</span>
+                    </div>
+                    <p>Un bon échauffement est crucial pour prévenir les blessures et optimiser vos performances.
+                        Découvrez nos techniques professionnelles.</p>
+                    <ul class="blog-features">
+                        <li>Échauffement dynamique</li>
+                        <li>Exercices de mobilité</li>
+                        <li>Préparation cardio</li>
+                    </ul>
+                    <a href="#" class="read-more">Lire plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="../public/imgs/images/nutrition.jpg" alt="Nutrition">
+                    <div class="blog-overlay">
+                        <span class="blog-category">Nutrition</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h3>Nutrition Post-Entraînement</h3>
+                    <div class="blog-info">
+                        <span><i class="fas fa-clock"></i> 7 min de lecture</span>
+                        <span><i class="fas fa-calendar"></i> 12 Mars 2024</span>
+                    </div>
+                    <p>Optimisez votre récupération avec une nutrition adaptée. Des repas riches en protéines pour une
+                        meilleure récupération musculaire.</p>
+                    <ul class="blog-features">
+                        <li>Protéines essentielles</li>
+                        <li>Hydratation optimale</li>
+                        <li>Suppléments recommandés</li>
+                    </ul>
+                    <a href="#" class="read-more">Lire plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="../public/imgs/images/sommeil.jpg" alt="Sommeil">
+                    <div class="blog-overlay">
+                        <span class="blog-category">Récupération</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h3>Sommeil & Performance</h3>
+                    <div class="blog-info">
+                        <span><i class="fas fa-clock"></i> 6 min de lecture</span>
+                        <span><i class="fas fa-calendar"></i> 10 Mars 2024</span>
+                    </div>
+                    <p>Le sommeil est un élément clé de la performance sportive. Apprenez à optimiser votre récupération
+                        nocturne.</p>
+                    <ul class="blog-features">
+                        <li>Cycles de sommeil</li>
+                        <li>Techniques de relaxation</li>
+                        <li>Rituels pré-sommeil</li>
+                    </ul>
+                    <a href="#" class="read-more">Lire plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contactez-nous</h2>
+        <div class="contact-container">
+            <div class="social-links">
+                <a href="https://wa.me/212600000000" class="social-link whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://facebook.com/votre-page" class="social-link facebook" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://instagram.com/votre-compte" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+            </div>
+            <form id="whatsappForm" onsubmit="sendWhatsApp(event)">
+                <input type="text" id="name" placeholder="Votre Nom" required>
+                <input type="email" id="email" placeholder="Votre Email" required>
+                <textarea id="message" placeholder="Votre Message" required></textarea>
+                <button type="submit">Envoyer via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Fitness Club. Tous droits réservés.</p>
+    </footer>
+
+    <script src="../js/home page.js"></script>
+
+</body>
+
+</html>

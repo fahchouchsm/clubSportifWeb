@@ -1,6 +1,21 @@
 <?php
 require_once "../php/connectDB.php";
 require_once "../php/database/getSeance.php";
+require_once "../php/functions/isLoged.php";
+
+session_start();
+$email = isLogged();
+$clientId = null;
+
+if ($email) {
+    $stmt = $conn->prepare("SELECT clientId FROM client WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $client = $result->fetch_assoc();
+    $stmt->close();
+    $clientId = $client['clientId'] ?? null;
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +34,6 @@ require_once "../php/database/getSeance.php";
     <div class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <h1 class="text-4xl font-bold text-gray-900 mb-8 text-center">Séances à venir</h1>
 
-        <!-- Recherche et Filtre -->
         <div class="mb-8 flex flex-col sm:flex-row gap-4 justify-center">
             <input type="text" id="search" placeholder="Rechercher par nom de séance..."
                 class="p-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-full sm:w-64">
@@ -46,6 +60,17 @@ require_once "../php/database/getSeance.php";
                     $duration = substr(strval(strtotime($seance['tempFin']) - strtotime($seance['tempDebut'])), 0, 5);
                     $remaining_spots = $seance['max'] - $seance['subscribed_count'];
                     $is_full = $remaining_spots <= 0;
+
+                    // Check if client is registered
+                    $isRegistered = false;
+                    if ($clientId) {
+                        $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM clientSeance WHERE clientId = ? AND seanceId = ?");
+                        $stmt->bind_param("ii", $clientId, $seance['seanceId']);
+                        $stmt->execute();
+                        $resultCheck = $stmt->get_result();
+                        $isRegistered = $resultCheck->fetch_assoc()['count'] > 0;
+                        $stmt->close();
+                    }
             ?>
                     <div class="session-card bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200"
                         data-coach-id="<?php echo $seance['coachId']; ?>"
@@ -64,6 +89,10 @@ require_once "../php/database/getSeance.php";
                         <div class="flex justify-end items-end">
                             <?php if ($is_full) { ?>
                                 <span class="text-red-600 font-medium">Complet</span>
+                            <?php } elseif ($isRegistered) { ?>
+                                <a href="../php/unregisterSeance.php?seanceId=<?php echo $seance['seanceId']; ?>"
+                                    class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200">Se
+                                    désinscrire</a>
                             <?php } else { ?>
                                 <a href="../php/registerSeance.php?seanceId=<?php echo $seance['seanceId']; ?>"
                                     class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors duration-200">S'inscrire</a>
@@ -79,7 +108,6 @@ require_once "../php/database/getSeance.php";
         </div>
     </div>
 
-    <!-- JavaScript pour Recherche et Filtre -->
     <script>
         const searchInput = document.getElementById('search');
         const filterCoach = document.getElementById('filterCoach');

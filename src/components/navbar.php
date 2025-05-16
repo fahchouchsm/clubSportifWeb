@@ -7,7 +7,7 @@ $isLoged = isLogged();
     <img src="../public/logo/png/logo-no-background.png" alt="Logo" class="h-8" />
     <ul class="hidden list-none gap-8 md:flex">
         <li class="rounded hover:bg-orange-500 px-4 py-2 text-black hover:text-white">
-            <a href="../pages/profile.php" class="flex items-center gap-2 font-semibold"><i class="fas fa-home"></i>
+            <a href="../pages/home.html" class="flex items-center gap-2 font-semibold"><i class="fas fa-home"></i>
                 Accueil</a>
         </li>
         <li>

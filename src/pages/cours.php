@@ -2,6 +2,7 @@
 require_once "../php/connectDB.php";
 require_once "../php/database/getSeance.php";
 require_once "../php/functions/isLoged.php";
+require_once "../php/functions/isSubscribed.php";
 
 session_start();
 $email = isLogged();
@@ -49,7 +50,6 @@ if ($email) {
             </select>
         </div>
 
-        <!-- Grille des Séances -->
         <div id="sessionGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <?php
             $limit = 50;
@@ -61,7 +61,6 @@ if ($email) {
                     $remaining_spots = $seance['max'] - $seance['subscribed_count'];
                     $is_full = $remaining_spots <= 0;
 
-                    // Check if client is registered
                     $isRegistered = false;
                     if ($clientId) {
                         $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM clientSeance WHERE clientId = ? AND seanceId = ?");

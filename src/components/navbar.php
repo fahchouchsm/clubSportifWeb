@@ -16,7 +16,7 @@ $isLoged = isLogged();
                     class="fas fa-calendar"></i> Les Séances</a>
         </li>
         <li>
-            <a href="../pages/showPricing.html"
+            <a href="../pages/showPricing.php"
                 class="flex items-center gap-2 text-black hover:bg-orange-500 hover:text-white px-4 py-2 rounded"><i
                     class="fas fa-ticket-alt"></i> Mon Abonnement</a>
         </li>

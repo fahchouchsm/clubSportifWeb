@@ -20,7 +20,7 @@ $client = $result->fetch_assoc();
 $stmt->close();
 
 if (!$client) {
-  die("Erreur : Utilisateur introuvable. 😡");
+  die("Erreur : Utilisateur introuvable.");
 }
 $clientId = $client['clientId'];
 ?>

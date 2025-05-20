@@ -1,8 +1,8 @@
 <?php
 
-function getClientByEmail(mysqli $mysqli, string $email): null| mysqli_result
+function getClientByEmail(mysqli $conn, string $email): null| mysqli_result
 {
-    $stmt = $mysqli->prepare("SELECT * FROM client WHERE email = ?");
+    $stmt = $conn->prepare("SELECT * FROM client WHERE email = ?");
 
     $stmt->bind_param("s", $email);
     $stmt->execute();

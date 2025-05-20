@@ -20,7 +20,7 @@ $client = $result->fetch_assoc();
 $stmt->close();
 
 if (!$client) {
-    die("Erreur : Utilisateur introuvable. 😡");
+    die("Erreur : Utilisateur introuvable.");
 }
 $clientId = $client['clientId'];
 
@@ -35,7 +35,7 @@ $validPlans = [
 ];
 
 if (!isset($validPlans[$plan]) || $amount !== $validPlans[$plan]['amount']) {
-    die("Erreur : Plan ou montant invalide. 😤");
+    die("Erreur : Plan ou montant invalide.");
 }
 
 $planLabel = $validPlans[$plan]['label'];
@@ -105,45 +105,7 @@ $planDuration = $validPlans[$plan]['duration'];
                     throw err;
                 });
             },
-            onApprove: function(data, actions) {
-                console.log('Fetching captureOrder.php with orderID:', data.orderID);
-                return fetch('./captureOrder.php?orderID=' + data.orderID, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        clientId: <?php echo $clientId; ?>,
-                        plan: '<?php echo $plan; ?>',
-                        duration: <?php echo $planDuration; ?>,
-                        amount: <?php echo $amount; ?>
-                    })
-                }).then(res => {
-                    console.log('captureOrder.php status:', res.status);
-                    if (!res.ok) {
-                        throw new Error('Network response was not ok: ' + res.status);
-                    }
-                    return res.json();
-                }).then(details => {
-                    document.getElementById('loading').style.display = 'none';
-                    if (details.success) {
-                        alert(
-                            'Paiement réussi ! Votre abonnement <?php echo htmlspecialchars($planLabel); ?> est actif. 🎉');
-                        window.location.href = '../pages/profile.php';
-                    } else {
-                        alert('Erreur : ' + details.error + ' 😞');
-                    }
-                }).catch(err => {
-                    console.error('Capture Order Error:', err);
-                    alert('Erreur lors de la capture du paiement : ' + err.message);
-                    document.getElementById('loading').style.display = 'none';
-                });
-            },
-            onError: function(err) {
-                console.error('PayPal Error:', err);
-                alert('Une erreur s\'est produite avec PayPal : ' + (err.message || 'Unknown error'));
-                document.getElementById('loading').style.display = 'none';
-            }
+            onApprove: function(data, actions) {},
         }).render('#paypal-button-container');
     </script>
 </body>
